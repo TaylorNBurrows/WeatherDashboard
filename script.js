@@ -1,5 +1,6 @@
 
 var searchButton = $("#search");
+var city;
 var weatherCard = $("#weatherCard")
 var currentDay = $("#currentDay");
 var searchHistory = $("#city-history")
@@ -20,6 +21,7 @@ searchButton.on("click", function () {
             console.log("Weather Object: ", response)
             weatherCard.empty();
             currentDay.empty();
+            date.empty();
 
             renderCityInfo(response)
             renderWeather(response)
@@ -33,7 +35,7 @@ searchButton.on("click", function () {
     $.ajax({ url: forecastUrl, method: "GET" })
         .then(function (forecast) {
             console.log("Forecast object: ", forecast)
-            // renderForecast(forecast)
+            renderForecast(forecast)
         })
 
 })
@@ -65,7 +67,7 @@ $(document).on("keypress", function (e) {
         $.ajax({ url: forecastUrl, method: "GET" })
             .then(function (forecast) {
                 console.log("Forecast object: ", forecast)
-                // renderForecast(forecast)
+                renderForecast(forecast)
             })
     }
 })
@@ -169,25 +171,54 @@ function renderuvIndex(coordinates) {
 
 function addToHistory(cityName) {
     var historyDiv = $("#city-history")
-    var listHistory = $("<li>").addClass("list-group-item d-flex justify-content-between align-items-center history")
-    var countHistorySpan = $("<span>")
-    countHistorySpan.textContent(countHistoryText)
-
-
-
-
-    historyDiv.append(listhistory)
-    listHistory.append(countHistorySpan)
+    var listHistory = $("<li>").addClass("list-group-item d-flex justify-content-between align-items-center")
+    listHistory.text(cityName.name)
+    // var countHistorySpan = $("<span>")
+    // countHistorySpan.textContent(countHistoryText)
+    historyDiv.append(listHistory)
+    // listHistory.append(countHistorySpan)
 
 
 }
 
-$(".history").on("click", "li", function () {
-    renderCityInfo($(this).text());
-    renderWeather($(this).text());
-    renderuvIndex($(this).text());
-    countHistoryText++
-});
+function renderForecast(forecastCity) {
+    var forecastTitle = $("#forecastTitle");
+    forecastTitle.text("5 Day Forecast: ")
+
+    var day1 = $("#day1")
+    var day2 = $("#day2")
+    var day3 = $("#day3")
+    var day4 = $("#day4")
+    var day5 = $("#day5")
+
+    var days = [day1, day2, day3, day4, day5]
+
+    days.forEach(function (day) {
+        var forecastCard = $("<div>").attr("card bg-primary text-white");
+        var forecastCardBody = $("<div>").attr("card-body p-2")
+
+        var forecastTitle = $("<h6>").addClass("")
+
+    });
+
+    // day1.empty();
+    // day2.empty();
+    // day3.empty();
+    // day4.empty();
+    // day5.empty();
+
+
+
+
+}
+
+
+// $(".history").on("click","li", function (event) {
+//     event.stopPropagation();
+//     renderCityInfo($(this).val());
+//     renderWeather($(this).val());
+//     renderuvIndex($(this).val());
+// });
 
     // Define Varialbes
 // Search button
