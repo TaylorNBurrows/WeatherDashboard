@@ -1,0 +1,34 @@
+.low{
+    background-color: green;
+    color: black;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.moderate{
+    background-color: yellow;
+    color: black;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.high{
+    background-color: orange;
+    color: black;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.very-high{
+    background-color: red;
+    color: black;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.extreme{
+    background-color: violet;
+    color: black;
+    padding: 5px;
+    border-radius: 5px;
+}
